@@ -3,11 +3,13 @@ const { Client, LocalAuth } = pkg;
 import pkg2 from 'qrcode-terminal';
 const qrCode = pkg2;
 
+export const client = new Client({
+  authStrategy: new LocalAuth(),
+  puppeteer: { headless: true },
+});
+
 export class WhatsappApi {
   static async setWhatsappReminder() {
-    const client = new Client({
-      authStrategy: new LocalAuth(),
-    });
     client.on('qr', (qr) => {
       // Generate and scan this code with your phone
       console.log({ qr });
