@@ -11,6 +11,7 @@ import { config } from '../config/development.js';
 
 import { errorHandler } from '../shared/middleware/error-handel.middleware.js';
 import { WebSocket } from '../src/socket/webSocket.js';
+import { WhatsappApi } from '../src/whatsapp-web/whatsapp-reminder.js';
 import { whatsappReminderRelativeRoute, whatsappReminderRouter } from '../src/routes/whatsapp-reminder.routes.js';
 
 /**
@@ -97,6 +98,11 @@ export function startServer(app) {
    * Setup socket server.
    */
   WebSocket.setSocket(socketIOServer);
+
+  /**
+   * Setup whatsapp reminder.
+   */
+  WhatsappApi.setWhatsappReminder();
   httpServer.listen(config.PORT, () => {
     console.log(`Server and socket are running at port ${config.PORT}`);
   });
