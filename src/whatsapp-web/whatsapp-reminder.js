@@ -5,7 +5,6 @@ const qrCode = pkg2;
 
 export const client = new Client({
   authStrategy: new LocalAuth(),
-  puppeteer: { headless: true },
 });
 
 export class WhatsappApi {
@@ -17,8 +16,11 @@ export class WhatsappApi {
       console.log('QR RECEIVED', qr);
     });
 
-    client.on('ready', () => {
+    client.on('ready', async () => {
       console.log('Client is ready!');
+      await client.setDisplayName('CRMHOLCK');
+      const x = client.info;
+      console.log({ x });
     });
 
     client.on('message', (msg) => {

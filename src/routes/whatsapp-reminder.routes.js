@@ -1,8 +1,5 @@
 import { Router } from 'express';
 import pkg from 'whatsapp-web.js';
-const { MessageMedia, Location } = pkg;
-import validURL from 'valid-url';
-import fs from 'fs';
 
 import { OK, BadRequest, unAuthenticated } from '../../shared/util/http-responses.util.js';
 import WhatsappReminderDataAccess from '../data/whatsapp/whatsapp-reminder.data.js';
